@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Презентація сайту LumaFit AI</title>
+    <meta
+      name="description"
+      content="HTML-презентація сайту LumaFit AI з описом ідеї, функціоналу та структури."
+    >
+    <style>
+      :root {
+        --bg: #f7fbfa;
+        --surface: #ffffff;
+        --ink: #111618;
+        --muted: #5d686b;
+        --line: #dce7e4;
+        --teal: #10bdb5;
+        --teal-dark: #078f89;
+        --coral: #f37b63;
+        --coral-soft: #ffe7e0;
+        --shadow: 0 18px 50px rgba(18, 46, 48, 0.1);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 12% 0%, rgba(16, 189, 181, 0.1), transparent 28rem),
+          linear-gradient(135deg, #f7fbfa 0%, #ffffff 55%, #fff7f3 100%);
+        color: var(--ink);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page-shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 16px;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 68px;
+        margin-top: 16px;
+        padding: 0 18px;
+        border: 1px solid rgba(220, 231, 228, 0.86);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 12px 38px rgba(32, 55, 57, 0.08);
+        backdrop-filter: blur(16px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+      }
+
+      .brand-mark {
+        position: relative;
+        width: 20px;
+        height: 24px;
+      }
+
+      .brand-mark::before,
+      .brand-mark::after {
+        position: absolute;
+        bottom: 1px;
+        content: "";
+        width: 9px;
+        border-radius: 12px;
+      }
+
+      .brand-mark::before {
+        left: 2px;
+        height: 22px;
+        background: var(--teal);
+        transform: rotate(24deg);
+      }
+
+      .brand-mark::after {
+        right: 2px;
+        height: 14px;
+        background: var(--coral);
+        transform: rotate(-24deg);
+      }
+
+      .topbar nav {
+        display: flex;
+        gap: 22px;
+        color: #20282b;
+        font-weight: 750;
+      }
+
+      .topbar a:hover {
+        color: var(--teal-dark);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
+        gap: 44px;
+        align-items: center;
+        min-height: calc(100vh - 100px);
+        padding: 70px 0 54px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--teal-dark);
+        font-size: 0.78rem;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+        overflow-wrap: anywhere;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin-bottom: 18px;
+        font-size: clamp(2.8rem, 5.4vw, 4.6rem);
+        line-height: 0.95;
+        overflow-wrap: anywhere;
+      }
+
+      h2 {
+        margin-bottom: 18px;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.08;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 1.24rem;
+      }
+
+      .lead {
+        max-width: 660px;
+        color: #263033;
+        font-size: 1.2rem;
+        line-height: 1.6;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 22px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-weight: 850;
+      }
+
+      .button-primary {
+        background: var(--teal);
+        color: #ffffff;
+        box-shadow: 0 14px 28px rgba(16, 189, 181, 0.24);
+      }
+
+      .button-secondary {
+        border-color: rgba(243, 123, 99, 0.62);
+        background: #ffffff;
+        color: #a94b39;
+      }
+
+      .preview-card {
+        margin: 0;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: var(--shadow);
+      }
+
+      .preview-card img {
+        display: block;
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+
+      .section-heading {
+        max-width: 760px;
+        margin-bottom: 26px;
+      }
+
+      .grid-3,
+      .grid-2,
+      .structure-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .hero > *,
+      .grid-3 > *,
+      .grid-2 > *,
+      .structure-grid > *,
+      .flow > * {
+        min-width: 0;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .structure-grid {
+        grid-template-columns: 0.8fr 1.2fr;
+      }
+
+      .card,
+      .flow-step,
+      .summary-panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 14px 36px rgba(19, 43, 46, 0.06);
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .card p,
+      .flow-step p,
+      .summary-panel p,
+      .list li {
+        color: var(--muted);
+        line-height: 1.58;
+      }
+
+      .badge {
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        margin-bottom: 18px;
+        border-radius: 8px;
+        background: rgba(16, 189, 181, 0.13);
+        color: var(--teal-dark);
+        font-weight: 950;
+      }
+
+      .badge.coral {
+        background: var(--coral-soft);
+        color: #a94b39;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .flow-step {
+        padding: 20px;
+      }
+
+      .flow-step span {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        margin-bottom: 18px;
+        border-radius: 8px;
+        background: rgba(16, 189, 181, 0.13);
+        color: var(--teal-dark);
+        font-weight: 950;
+      }
+
+      .summary-panel {
+        padding: 26px;
+      }
+
+      .list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .screenshot {
+        display: block;
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        margin: 54px 0 28px;
+        padding-top: 26px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+      }
+
+      @media (max-width: 900px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 14px;
+          padding: 18px;
+        }
+
+        .topbar nav {
+          flex-wrap: wrap;
+        }
+
+        .hero,
+        .grid-3,
+        .grid-2,
+        .structure-grid,
+        .flow {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 52px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page-shell {
+          width: min(100% - 20px, 1120px);
+        }
+
+        h1 {
+          font-size: 2.32rem;
+          line-height: 1;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .topbar nav {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          width: 100%;
+          gap: 12px 16px;
+          font-size: 0.94rem;
+        }
+
+        .topbar nav a {
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+
+        .footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="На початок презентації">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>LumaFit AI</span>
+        </a>
+        <nav aria-label="Навігація презентації">
+          <a href="#idea">Ідея</a>
+          <a href="#features">Функціонал</a>
+          <a href="#structure">Структура</a>
+          <a href="#workflow">AI workflow</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div>
+            <p class="eyebrow">HTML-презентація сайту</p>
+            <h1>Сайт для AI-фітнес тренера LumaFit AI</h1>
+            <p class="lead">
+              LumaFit AI допомагає зайнятим людям тренуватися регулярно:
+              сервіс створює персональні 15-хвилинні тренування, підтримує
+              щоденні звички та показує прогрес у простому дашборді.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="index.html">Відкрити сайт</a>
+              <a class="button button-secondary" href="#idea">Переглянути опис</a>
+            </div>
+          </div>
+
+          <figure class="preview-card">
+            <img src="assets/nanobanana-iteration-2.png" alt="Дизайн сайту LumaFit AI">
+          </figure>
+        </section>
+
+        <section id="idea">
+          <div class="section-heading">
+            <p class="eyebrow">Ідея проєкту</p>
+            <h2>Персональний фітнес без складного планування</h2>
+            <p class="lead">
+              Основна ідея сайту — презентувати цифровий продукт, який робить
+              спорт доступним для людей із насиченим графіком. Акцент зроблено не
+              на професійному спорті, а на стабільності, простих щоденних діях і
+              швидкому старті.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <span class="badge">ЦА</span>
+              <h3>Цільова аудиторія</h3>
+              <p>
+                Студенти, офісні працівники, фрилансери та всі, хто хоче
+                тренуватися, але не має часу на довгі програми.
+              </p>
+            </article>
+            <article class="card">
+              <span class="badge coral">AI</span>
+              <h3>Цінність продукту</h3>
+              <p>
+                AI підбирає тренування під ціль, рівень підготовки, графік та
+                попередній прогрес користувача.
+              </p>
+            </article>
+            <article class="card">
+              <span class="badge">15</span>
+              <h3>Ключова обіцянка</h3>
+              <p>
+                Користувач може почати тренування за кілька хвилин і підтримувати
+                форму без складного планування.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="features">
+          <div class="section-heading">
+            <p class="eyebrow">Функціонал</p>
+            <h2>Що показує сайт</h2>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>Адаптивні тренування</h3>
+              <p>
+                Сайт пояснює, що тренування змінюються залежно від відгуку
+                користувача, цілей і прогресу.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Трекінг звичок</h3>
+              <p>
+                Візуальні елементи показують streak, щоденні завдання та простий
+                контроль регулярності.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Аналітика прогресу</h3>
+              <p>
+                Дашборд демонструє графіки, показники активності та короткі AI
+                поради для користувача.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="structure">
+          <div class="section-heading">
+            <p class="eyebrow">Структура сайту</p>
+            <h2>Логіка сторінки побудована як landing page</h2>
+          </div>
+
+          <div class="structure-grid">
+            <div class="summary-panel">
+              <h3>Основні блоки</h3>
+              <ul class="list">
+                <li>Навігація з посиланнями на ключові секції.</li>
+                <li>Hero section з головним меседжем і CTA.</li>
+                <li>Блок переваг продукту.</li>
+                <li>Секція "How It Works" із трьома кроками.</li>
+                <li>Плани Starter і Pro.</li>
+                <li>Блок результатів і testimonial.</li>
+                <li>Footer з повторною навігацією.</li>
+              </ul>
+            </div>
+
+            <div>
+              <img class="screenshot" src="assets/running-website-desktop.png" alt="Скріншот desktop-версії сайту">
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <p class="eyebrow">Responsive design</p>
+            <h2>Мобільна версія</h2>
+            <p class="lead">
+              На мобільних екранах сайт переходить у single-column layout,
+              навігація стає компактною, CTA-кнопки займають зручну ширину, а
+              дашборд не перекриває текст.
+            </p>
+          </div>
+          <img class="screenshot" src="assets/running-website-mobile.png" alt="Скріншот мобільної версії сайту">
+        </section>
+
+        <section id="workflow">
+          <div class="section-heading">
+            <p class="eyebrow">AI workflow</p>
+            <h2>Як використовувалися AI-інструменти</h2>
+          </div>
+
+          <div class="flow">
+            <article class="flow-step">
+              <span>1</span>
+              <h3>NanoBanana</h3>
+              <p>Створення дизайн-концепту сайту в desktop і mobile форматах.</p>
+            </article>
+            <article class="flow-step">
+              <span>2</span>
+              <h3>dev0</h3>
+              <p>Генерація або уточнення вебсайту за дизайн-референсом і підключення GitHub.</p>
+            </article>
+            <article class="flow-step">
+              <span>3</span>
+              <h3>VEO3</h3>
+              <p>Створення короткого промо-відео з назвою бренду та CTA.</p>
+            </article>
+            <article class="flow-step">
+              <span>4</span>
+              <h3>Suno</h3>
+              <p>Генерація короткого промо-звуку, який відповідає стилю бренду.</p>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <p class="eyebrow">Висновок</p>
+            <h2>Сайт демонструє єдиний цифровий продукт</h2>
+            <p class="lead">
+              Проєкт поєднує дизайн, код, промо-відео, аудіо та документацію в
+              одну логічну презентацію бренду. Головна ціль — показати не тільки
+              готову сторінку, а й керований AI-процес створення продукту.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <strong>LumaFit AI</strong>
+        <span>HTML-презентація сайту</span>
+      </footer>
+    </div>
+  </body>
+</html>
